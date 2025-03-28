@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Person List</title>
+</head>
+<body>
+  <h1>Person List</h1>
+  <a href="/person/create">Create New Person</a>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Mobile Number</th>
+      <th>Actions</th>
+    </tr>
+    <% people.forEach(person => { %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.age %></td>
+      <td><%= person.gender %></td>
+      <td><%= person.mobileNumber %></td>
+      <td>
+          <a href="/person/edit/<%= person._id %>">Edit</a>
+          <form action="/person/delete/<%= person._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>   
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
