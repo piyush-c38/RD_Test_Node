@@ -7,6 +7,6 @@ To connect the MongoDB Data base, create .env file in the root folder and add th
 **PORT** = "Port to run the server"
 
 ## Setup the Node Modules
-Run **npm install** command in the root folder to install all the required node modules.
+Run `npm install` command in the root folder to install all the required node modules.
 
-Run **npx run start** command to start the server. By default the server will start running at Port: 5000.
+Run `npx run start` command to start the server. By default the server will start running at `Port: 5000`.
