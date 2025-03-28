@@ -10,6 +10,10 @@ const {
 
 // CRUD Routes
 router.route("/").get(showPersonList).post(createPerson);
+router.route("/:id").put(editPerson);
+router.route("/delete/:id").delete(deletePerson);
+
+//Routes for ejs pages
 router.route("/edit/:id").get(async (req, res) => {
   const person = await Person.findById(req.params.id);
   if (!person) {
@@ -18,7 +22,5 @@ router.route("/edit/:id").get(async (req, res) => {
   res.render('edit', { person });
 });
 router.route("/create").get((req, res) => res.render('create'));
-router.route("/:id").put(editPerson);
-router.route("/delete/:id").delete(deletePerson);
 
 module.exports = router;

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const connectDb = async () => {
   try {
-    //BUG: The connection string is hardcoded in the code. It should be stored in an environment variable.
-    const connect = await mongoose.connect('mongodb+srv://chandrakarpiyush36:qwertyuiop@cluster0.kissl6y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+    const connect = await mongoose.connect(process.env.CONNECTION_STRING);
     console.log(
       "Database connected: ",
       connect.connection.host,
