@@ -5,7 +5,7 @@ const Person = require("../models/person.model");
 const showPersonList = asyncHandler(async (req, res) => {
   try {
     const people = await Person.find({});
-    res.render("index", { people });
+    res.status(200).json(people);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -22,7 +22,7 @@ const createPerson = asyncHandler(async (req, res) => {
     const newPerson = new Person({ name, age, gender, mobileNumber });
 
     await newPerson.save();
-    res.redirect("/person");
+    res.status(200).json({message: "Person added successfully"});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -39,7 +39,7 @@ const editPerson = asyncHandler(async (req, res) => {
 
     Object.assign(person, req.body);
     await person.save();
-    res.redirect("/person");
+    res.status(200).json({message: "Person updated successfully"});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -52,7 +52,7 @@ const deletePerson = asyncHandler(async (req, res) => {
     if (!deletedPerson) {
       return res.status(404).json({ message: "Not found" });
     }
-    res.redirect("/person");
+    res.status(200).json({message: "Person deleted successfully"});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
